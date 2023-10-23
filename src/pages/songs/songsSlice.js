@@ -57,36 +57,55 @@ const songSlice = createSlice({
     [fetchSongs.rejected](state, action) {
       state.isLoading = false;
     },
+    [fetchCreateSong.pending](state, action) {
+      state.isLoading = true;
+      toast.loading('Create song is proccessing', {toastId: 'create-song'})
+    },
     [fetchCreateSong.fulfilled](state, action) {
       console.log(action.payload);
       state.data.unshift(action.payload.data);
       state.isLoading = false;
       toast.success('Create new song successfully')
+      toast.dismiss("create-song")
     },
     [fetchCreateSong.rejected](state, action) {
       state.isLoading = false;
       console.log(action.payload)
       toast.error("Create song failed")
+      toast.dismiss("create-song")
+    },
+    [fetchUpdateSong.pending](state, action) {
+      state.isLoading = true;
+      toast.loading('Update song is proccessing', {toastId: 'update-song'})
     },
     [fetchUpdateSong.fulfilled](state, action) {
       console.log(action.payload);
       state.isLoading = false;
       toast.success('Update song successfully')
+      toast.dismiss("update-song")
     },
     [fetchUpdateSong.rejected](state, action) {
       state.isLoading = false;
       console.log("Update song failed", action.payload)
       toast.error("Update song failed")
+      toast.dismiss("update-song")
+    },
+
+    [fetchDeleteSong.pending](state, action) {
+      state.isLoading = true;
+      toast.loading('Delete song is proccessing', {toastId: 'delete-song'})
     },
     [fetchDeleteSong.fulfilled](state, action) {
       console.log(action.payload);
       state.isLoading = false;
       toast.success('Delete song successfully')
+      toast.dismiss('delete-song')
     },
     [fetchDeleteSong.rejected](state, action) {
       state.isLoading = false;
       console.log("Delete song failed", action.payload)
       toast.error("Delete song failed")
+      toast.dismiss('delete-song')
     },
   },
 });

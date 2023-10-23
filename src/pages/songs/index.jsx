@@ -23,7 +23,7 @@ const SongsPage = () => {
   const [isUpdate, setIsUpdate] = useState(false);
   const [data, setData] = useState();
   //************Side effect***********
-  const songs = useSongs({ params: { search: queryParams.search, sort: '-createdAt' } });
+  const songs = useSongs({ params: { search: queryParams.search, limit: 30, sort: '-createdAt' } });
 
   //***********Get data from store*****************
 
