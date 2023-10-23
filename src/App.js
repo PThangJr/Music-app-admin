@@ -16,7 +16,7 @@ import "react-toastify/dist/ReactToastify.css"
 const App = () => {
   return (
     <div className="app">
-        <ReactToastifyContainer
+        <ToastContainer
         closeButton
         draggable
         position="top-right"
