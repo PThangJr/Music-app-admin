@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import songAPI from '../../api/songAPI';
+import {toast} from 'react-toastify'
 
 const initData = [];
 const initialState = {
@@ -60,23 +61,32 @@ const songSlice = createSlice({
       console.log(action.payload);
       state.data.unshift(action.payload.data);
       state.isLoading = false;
+      toast.success('Create new song successfully')
     },
     [fetchCreateSong.rejected](state, action) {
       state.isLoading = false;
+      console.log(action.payload)
+      toast.error("Create song failed")
     },
     [fetchUpdateSong.fulfilled](state, action) {
       console.log(action.payload);
       state.isLoading = false;
+      toast.success('Update song successfully')
     },
     [fetchUpdateSong.rejected](state, action) {
       state.isLoading = false;
+      console.log("Update song failed", action.payload)
+      toast.error("Update song failed")
     },
     [fetchDeleteSong.fulfilled](state, action) {
       console.log(action.payload);
       state.isLoading = false;
+      toast.success('Delete song successfully')
     },
     [fetchDeleteSong.rejected](state, action) {
       state.isLoading = false;
+      console.log("Delete song failed", action.payload)
+      toast.error("Delete song failed")
     },
   },
 });

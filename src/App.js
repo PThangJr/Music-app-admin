@@ -8,10 +8,23 @@ import SingersPage from './pages/singers';
 import SongsPage from './pages/songs';
 import LoginPage from './pages/auths/login';
 import RegisterPage from './pages/auths/register';
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+
+
 
 const App = () => {
   return (
     <div className="app">
+        <ReactToastifyContainer
+        closeButton
+        draggable
+        position="top-right"
+        theme="colored"
+        pauseOnHover
+        hideProgressBar
+        autoClose={3500}
+      />
       <MiniDrawer>
         <Routes>
           <Route path="/">
