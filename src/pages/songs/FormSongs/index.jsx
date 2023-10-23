@@ -58,7 +58,11 @@ const FormSongs = ({ data, onSubmit }) => {
     }
     dataForm.append('name', inputData.name);
     for (let i = 0; i < singersData.length; i++) {
-      dataForm.append('singers[]', singersData[i]._id || "6223219d8980ee953da005f0");
+      dataForm.append('singers[]', singersData[i]._id);
+    }
+    // Default singers
+    if(!singersData.length) {
+      dataForm.append('singers[]', "6223219d8980ee953da005f0")
     }
     for (let i = 0; i < authorsData.length; i++) {
       dataForm.append('authors[]', authorsData[i]._id);
